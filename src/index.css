@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+.font-geist {
+  font-family: "Geist", sans-serif !important;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.animate-on-scroll {
+  animation-play-state: paused !important;
+}
+
+.animate-on-scroll.animate {
+  animation-play-state: running !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply h-full overflow-hidden antialiased text-white bg-black;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.glass-panel {
+  @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl;
+}
+
+.glass-input {
+  @apply w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition placeholder:text-white/20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+}
