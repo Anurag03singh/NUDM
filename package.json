@@ -9,16 +9,17 @@
   },
   "dependencies": {
     "lucide-react": "^0.575.0",
-    "unicornstudio-react": "2.1.4-1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "recharts": "^2.15.4"
+    "recharts": "^2.15.4",
+    "unicornstudio-react": "2.1.4-1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",
     "@types/node": "^22.16.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@vercel/node": "^5.8.4",
     "@vitejs/plugin-react": "^5.0.4",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.8.3",
