@@ -6,8 +6,7 @@ export default function SiteFooter() {
           <div className="md:col-span-2">
             <p className="text-lg font-semibold text-white font-geist">UPYOG Property Tax</p>
             <p className="mt-4 max-w-md text-sm text-white/70 font-geist">
-              Dashboard built for the NUDM assessment. Data loads from properties.json — no separate
-              backend.
+              Multi-tenant property tax analytics across ten Indian cities.
             </p>
           </div>
           <div>
@@ -32,7 +31,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="mt-10 border-t border-white/10 pt-6">
-          <p className="text-xs text-white/50 font-geist">© {new Date().getFullYear()} UPYOG · NUDM</p>
+          <p className="text-xs text-white/50 font-geist">© {new Date().getFullYear()} UPYOG</p>
         </div>
       </div>
     </footer>

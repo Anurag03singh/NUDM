@@ -1,26 +1,34 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { generateChatReply, type ChatMessage } from "../lib/gemini-chat";
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") {
-    res.status(405).end();
-    return;
+export const config = {
+  runtime: "edge",
+};
+
+export default async function handler(request: Request) {
+  if (request.method !== "POST") {
+    return new Response(null, { status: 405 });
   }
 
   try {
-    const { messages, summary } = req.body as { messages: ChatMessage[]; summary: string };
+    const { messages, summary } = (await request.json()) as {
+      messages: ChatMessage[];
+      summary: string;
+    };
+
     const result = await generateChatReply(messages, summary, {
       apiKey: process.env.GEMINI_API_KEY,
       model: process.env.GEMINI_MODEL,
     });
 
     if (result.error) {
-      res.status(result.status ?? 500).json({ error: result.error });
-      return;
+      return Response.json({ error: result.error }, { status: result.status ?? 500 });
     }
 
-    res.status(200).json({ content: result.content });
+    return Response.json({ content: result.content });
   } catch (e) {
-    res.status(500).json({ error: e instanceof Error ? e.message : "Server error" });
+    return Response.json(
+      { error: e instanceof Error ? e.message : "Server error" },
+      { status: 500 },
+    );
   }
 }
